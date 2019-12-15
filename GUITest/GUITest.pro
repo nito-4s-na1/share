@@ -41,3 +41,10 @@ else:unix: LIBS += -L$$PWD/../../../../../usr/local/lib/ -lpacketmachine
 
 INCLUDEPATH += $$PWD/../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../usr/local/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/lib64/release/ -lpcap
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/lib64/debug/ -lpcap
+else:unix: LIBS += -L$$PWD/../../../../../usr/lib64/ -lpcap
+
+INCLUDEPATH += $$PWD/../../../../../usr/include/pcap
+DEPENDPATH += $$PWD/../../../../../usr/include/pcap
