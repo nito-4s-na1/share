@@ -5,6 +5,7 @@
 #include <string>
 //#include "listmodel.h"
 #include "packetlistmodel.h"
+#include<pcap.h>
 namespace Ui {
 class Widget;
 }
@@ -21,5 +22,6 @@ private:
 public slots:
 private slots:
   void on_pushButton_clicked(bool checked);
+  void on_pushButton_clicked();
 };
 #endif // WIDGET_H
