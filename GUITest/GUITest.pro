@@ -16,18 +16,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    deviceselect.cpp \
     main.cpp \
+    mainwindow.cpp \
     packet.cpp \
     packetcapture.cpp \
     packetlistmodel.cpp \
     widget.cpp
 
 HEADERS += \
+    deviceselect.h \
+    mainwindow.h \
     packet.h \
     packetlistmodel.h \
     widget.h
 
 FORMS += \
+    deviceselect.ui \
+    mainwindow.ui \
     widget.ui
 
 # Default rules for deployment.
@@ -41,3 +47,10 @@ else:unix: LIBS += -L$$PWD/../../../../../usr/local/lib/ -lpacketmachine
 
 INCLUDEPATH += $$PWD/../../../../../usr/local/include
 DEPENDPATH += $$PWD/../../../../../usr/local/include
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../usr/lib64/release/ -lpcap
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../usr/lib64/debug/ -lpcap
+else:unix: LIBS += -L$$PWD/../../../../../usr/lib64/ -lpcap
+
+INCLUDEPATH += $$PWD/../../../../../usr/include/pcap
+DEPENDPATH += $$PWD/../../../../../usr/include/pcap
